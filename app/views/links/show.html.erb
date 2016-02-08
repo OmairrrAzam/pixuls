@@ -1,10 +1,11 @@
 
 <div class="blog-post">
+    <%= image_tag @link.image.url(:medium), class: "img-thumbnail" %> 
     <h2 class="blog-post-title"><%= link_to @link.title,@link %></h2>
     <p class="blog-post-meta">Submitted about <%= time_ago_in_words(@link.created_at) %> by <%= @link.user.name %></p>
 </div>
 <hr>
-<!--<%= image_tag @link.image.url(:medium) %> -->
+
 	<div class="btn-group">
 	 <%= link_to 'Visit URL', @link.url, class: "btn btn-primary"  %>
 	 <% if user_signed_in? %>
@@ -15,6 +16,7 @@
 	 <% end %>
 
 	</div>
+
 	<div class="btn-group pull-right col-md-6">
   	  
   	  <%= link_to  like_link_path(@link), method: :put, class: "btn btn-default btn-sm" do %>
@@ -28,6 +30,7 @@
   	  	<%= @link.get_downvotes.size %>
   	  <% end %>
 	</div>
+
   <h3 class = "comments_title">
     <%= @link.comments.count %> Comments
   </h3>
